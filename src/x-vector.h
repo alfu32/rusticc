@@ -26,6 +26,7 @@
     };\
     return self;\
 }
+
 #define VECTOR_DERIVE_INIT(INNER_TYPE) Vector$##INNER_TYPE vector$##INNER_TYPE##_init(\
     INNER_TYPE* buffer,int buffer_length\
 ){\
@@ -121,4 +122,6 @@
     vector$##INNER_TYPE##_free(other);\
     return copy;\
 }
+
+
 #endif
