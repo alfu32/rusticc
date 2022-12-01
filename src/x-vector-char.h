@@ -53,15 +53,15 @@ String String_append_chars(String self,char str[]){
 	return self;
 }
 int String_print(String self){
-	printf(self.buffer);
+	printf( "%s", self.buffer );
 }
 
-#define __XSTRING_TEST \
-	String str=String_alloc(); \
-	String_append_chars(str," abcd "); \
-	String_print(str); \
-	String_free(str); \
-	String str2=String_of("something\n"); \
-	String_print(str2);\
+/// #define __XSTRING_TEST \
+/// 	String str=String_alloc(); \
+/// 	String_append_chars(str," abcd "); \
+/// 	String_print(str); \
+/// 	String_free(str); \
+/// 	String str2=String_of("something\n"); \
+/// 	String_print(str2);\
 
 #endif

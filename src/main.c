@@ -75,7 +75,7 @@ int vector_test()
 
 int Vector_ref_of$int_test()
 {
-	TEST("define test",{
+	TEST_inline("define test",{
 		printf("something");
 	})
 	Vector$int* v = VectorRef_of$int_alloc();
