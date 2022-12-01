@@ -6,6 +6,7 @@
 #include "x-optional.h"
 #include "x-vector.h"
 #include "x-vector-ref.h"
+#include "x-test.h"
 #define TRUE 1
 #define FALSE 2
 
@@ -30,6 +31,7 @@ VECTOR_DERIVE_PRINT(int, %d)
 VECTOR_DERIVE_MAP(int)
 VECTOR_DERIVE_COPY(int)
 VECTOR_DERIVE_CONCAT(int)
+
 
 VECTOR_REF_DERIVE_ALLOC(int)
 VECTOR_REF_DERIVE_INIT(int)
@@ -71,31 +73,34 @@ int vector_test()
 	return 0;
 }
 
-int vector_ref_test()
+int Vector_ref_of$int_test()
 {
-	Vector$int v = vector$int_alloc();
-	v = vector$int_push(v, 10);
-	v = vector$int_push(v, 10);
-	v = vector$int_push(v, 10);
-	vector$int_print(v);
-	Vector$int z=vector$int_init((int[]){1,2,3,4,5,6,7,8,9},9);
-	vector$int_print(z);
-
-	v=vector$int_map(v,&multiplier);
-
-	vector$int_print(v);
-	Vector$int cp1 = vector$int_copy(v);
-	VECTOR_INLINE_FOREACH(index,v,{
-		v.buffer[index]=v.buffer[index] - 2;
+	TEST("define test",{
+		printf("something");
 	})
-	vector$int_print(v);
-	Vector$int cp2 = vector$int_copy(v);
-	Vector$int concat = vector$int_concat(cp1,cp2);
-	vector$int_print(concat);
-	v=vector$int_free(v);
-	vector$int_print(v);
-	concat=vector$int_free(concat);
-	vector$int_print(concat);
+	Vector$int* v = VectorRef_of$int_alloc();
+	v = VectorRef_of$int_push(v, 10);
+	v = VectorRef_of$int_push(v, 10);
+	v = VectorRef_of$int_push(v, 10);
+	VectorRef_of$int_print(v);
+	Vector$int* z=VectorRef_of$int_init((int[]){1,2,3,4,5,6,7,8,9},9);
+	VectorRef_of$int_print(z);
+
+	v=VectorRef_of$int_map(v,&multiplier);
+
+	VectorRef_of$int_print(v);
+	Vector$int* cp1 = VectorRef_of$int_copy(v);
+	VECTOR_REF_INLINE_FOREACH(index,v,{
+		v->buffer[index]=v->buffer[index] - 2;
+	})
+	VectorRef_of$int_print(v);
+	Vector$int* cp2 = VectorRef_of$int_copy(v);
+	Vector$int* concat = VectorRef_of$int_concat(cp1,cp2);
+	VectorRef_of$int_print(concat);
+	v=VectorRef_of$int_free(v);
+	VectorRef_of$int_print(v);
+	concat=VectorRef_of$int_free(concat);
+	VectorRef_of$int_print(concat);
 	return 0;
 }
 
